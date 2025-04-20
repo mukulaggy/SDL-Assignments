@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Registration Form</title>
+</head>
+<body>
+  <h2>Registration Form</h2>
+  <form id="regForm">
+    First Name: <input type="text" id="fname" required><br><br>
+    Last Name: <input type="text" id="lname" required><br><br>
+    Organization: <input type="text" id="org" required><br><br>
+    Hobbies: <input type="text" id="hobbies" required><br><br>
+    <button type="submit">Register</button>
+  </form>
+
+  <h3>User Details:</h3>
+  <div id="output"></div>
+
+  <script>
+    document.getElementById("regForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const fname = document.getElementById("fname").value;
+      const lname = document.getElementById("lname").value;
+      const org = document.getElementById("org").value;
+      const hobbies = document.getElementById("hobbies").value;
+
+      if(fname && lname && org && hobbies) {
+        document.getElementById("output").innerHTML = `
+          <p><strong>First Name:</strong> ${fname}</p>
+          <p><strong>Last Name:</strong> ${lname}</p>
+          <p><strong>Organization:</strong> ${org}</p>
+          <p><strong>Hobbies:</strong> ${hobbies}</p>
+        `;
+      }
+    });
+  </script>
+</body>
+</html>

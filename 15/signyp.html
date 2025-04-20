@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Sign Up and Login</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        padding: 40px;
+      }
+      .box {
+        max-width: 300px;
+        padding: 20px;
+        border: 1px solid #ccc;
+        margin: 10px auto;
+        border-radius: 10px;
+      }
+      input {
+        width: 100%;
+        margin-bottom: 10px;
+        padding: 8px;
+      }
+      button {
+        width: 100%;
+        padding: 10px;
+        background: #28a745;
+        border: none;
+        color: white;
+        font-size: 16px;
+      }
+      #welcome {
+        text-align: center;
+        font-size: 20px;
+        margin-top: 20px;
+        color: #007bff;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box" id="signupBox">
+      <h3>Sign Up</h3>
+      <input type="text" id="signupUsername" placeholder="Enter Username" />
+      <input type="password" id="signupPassword" placeholder="Enter Password" />
+      <button onclick="signUp()">Sign Up</button>
+    </div>
+
+    <div class="box" id="loginBox" style="display: none">
+      <h3>Login</h3>
+      <input type="text" id="loginUsername" placeholder="Username" />
+      <input type="password" id="loginPassword" placeholder="Password" />
+      <button onclick="login()">Login</button>
+    </div>
+
+    <p id="welcome"></p>
+
+    <script>
+      let savedUsername = "";
+      let savedPassword = "";
+
+      function signUp() {
+        const user = document.getElementById("signupUsername").value.trim();
+        const pass = document.getElementById("signupPassword").value.trim();
+
+        if (user === "" || pass === "") {
+          alert("Please enter both username and password.");
+          return;
+        }
+
+        savedUsername = user;
+        savedPassword = pass;
+
+        alert("Sign up successful! Please log in.");
+        document.getElementById("signupBox").style.display = "none";
+        document.getElementById("loginBox").style.display = "block";
+      }
+
+      function login() {
+        const user = document.getElementById("loginUsername").value.trim();
+        const pass = document.getElementById("loginPassword").value.trim();
+
+        if (user === "" || pass === "") {
+          alert("Please enter both username and password.");
+          return;
+        }
+
+        if (user === savedUsername && pass === savedPassword) {
+          document.getElementById("loginBox").style.display = "none";
+          document.getElementById(
+            "welcome"
+          ).innerHTML = `Welcome, <strong>${user}</strong>!`;
+        } else {
+          alert("Invalid credentials. Try again.");
+        }
+      }
+    </script>
+  </body>
+</html>

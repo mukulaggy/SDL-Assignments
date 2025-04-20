@@ -1,0 +1,14 @@
+<p onmouseover="changeColor(this)">Hover over this text</p>
+
+<script>
+  function changeColor(element) {
+    element.style.color = "red";
+  }
+</script>
+<button id="myBtn">Click</button>
+
+<script>
+  document.getElementById("myBtn").addEventListener("click", function() {
+    alert("Button clicked with addEventListener!");
+  });
+</script>

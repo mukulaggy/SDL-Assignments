@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Gmail Registration Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f2f5;
+      padding: 20px;
+    }
+
+    .form-box {
+      background: #fff;
+      padding: 20px;
+      max-width: 400px;
+      margin: auto;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+    }
+
+    .error {
+      color: red;
+      font-size: 0.9em;
+      margin-top: 4px;
+    }
+
+    button {
+      margin-top: 15px;
+      padding: 10px;
+      width: 100%;
+      background: #1a73e8;
+      color: white;
+      border: none;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="form-box">
+  <h2>Gmail Registration</h2>
+  <form onsubmit="return validateForm()">
+    <input type="text" id="fname" placeholder="First Name">
+    <input type="text" id="lname" placeholder="Last Name">
+    <input type="email" id="email" placeholder="Email">
+    <input type="password" id="password" placeholder="Password">
+    <input type="password" id="confirm" placeholder="Confirm Password">
+    <input type="text" id="phone" placeholder="Phone Number">
+    
+    <div class="error" id="formError"></div>
+    <button type="submit">Register</button>
+  </form>
+</div>
+
+<script>
+  function validateForm() {
+    let fname = document.getElementById("fname").value.trim();
+    let lname = document.getElementById("lname").value.trim();
+    let email = document.getElementById("email").value.trim();
+    let password = document.getElementById("password").value;
+    let confirm = document.getElementById("confirm").value;
+    let phone = document.getElementById("phone").value.trim();
+    let error = document.getElementById("formError");
+    error.textContent = "";
+
+    if (fname.length < 2 || lname.length < 2) {
+      error.textContent = "First and Last names must be at least 2 characters.";
+      return false;
+    }
+
+    if (!/^\S+@\S+\.\S+$/.test(email)) {
+      error.textContent = "Please enter a valid email address.";
+      return false;
+    }
+
+    if (password.length < 6) {
+      error.textContent = "Password must be at least 6 characters.";
+      return false;
+    }
+
+    if (password !== confirm) {
+      error.textContent = "Passwords do not match.";
+      return false;
+    }
+
+    if (!/^\d{10}$/.test(phone)) {
+      error.textContent = "Phone number must be 10 digits.";
+      return false;
+    }
+
+    alert("Registration Successful!");
+    return true;
+  }
+</script>
+
+</body>
+</html>

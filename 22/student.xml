@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<student xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="student.xsd">
+  <name>Mukul</name>
+  <rollno>122</rollno>
+  <marks>89.5</marks>
+</student>

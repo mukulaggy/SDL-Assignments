@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Facebook Registration Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #eef1f5;
+      padding: 20px;
+    }
+
+    .form-box {
+      background: white;
+      padding: 20px;
+      max-width: 400px;
+      margin: auto;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #aaa;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 8px;
+      margin: 10px 0;
+    }
+
+    .error {
+      color: red;
+      font-size: 0.9em;
+    }
+  </style>
+</head>
+<body>
+
+<div class="form-box">
+  <h2>Create a Facebook Account</h2>
+  <form>
+    <input type="text" id="fname" placeholder="First Name" onblur="validateName('fname')">
+    <div class="error" id="fnameErr"></div>
+
+    <input type="text" id="lname" placeholder="Last Name" onblur="validateName('lname')">
+    <div class="error" id="lnameErr"></div>
+
+    <input type="email" id="email" placeholder="Email" onblur="validateEmail()">
+    <div class="error" id="emailErr"></div>
+
+    <input type="password" id="password" placeholder="New Password" onblur="validatePassword()">
+    <div class="error" id="passErr"></div>
+
+    <select id="gender" onblur="validateGender()">
+      <option value="">Select Gender</option>
+      <option>Male</option>
+      <option>Female</option>
+      <option>Other</option>
+    </select>
+    <div class="error" id="genderErr"></div>
+
+    <button type="submit">Sign Up</button>
+  </form>
+</div>
+
+<script>
+  function validateName(id) {
+    let name = document.getElementById(id).value.trim();
+    let err = document.getElementById(id + "Err");
+    if (name.length < 2) {
+      err.textContent = "Enter a valid name";
+    } else {
+      err.textContent = "";
+    }
+  }
+
+  function validateEmail() {
+    let email = document.getElementById("email").value.trim();
+    let err = document.getElementById("emailErr");
+    let pattern = /^\S+@\S+\.\S+$/;
+    err.textContent = pattern.test(email) ? "" : "Invalid email";
+  }
+
+  function validatePassword() {
+    let pass = document.getElementById("password").value;
+    let err = document.getElementById("passErr");
+    err.textContent = pass.length < 6 ? "Password must be at least 6 characters" : "";
+  }
+
+  function validateGender() {
+    let gender = document.getElementById("gender").value;
+    let err = document.getElementById("genderErr");
+    err.textContent = gender === "" ? "Select a gender" : "";
+  }
+</script>
+
+</body>
+</html>

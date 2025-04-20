@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            padding: 20px;
+            background-color:rebeccapurple;
+        }
+        .formbox{
+            margin: auto;
+            padding: 10px;
+            border-radius: 10px;
+            background-color: white;
+            max-width: 400px;
+            box-shadow: 0 0 10px #aaa;
+
+        }
+        input,select{
+            padding: 10px;
+            margin-bottom: 20px ;
+
+            width:95%
+        }
+        h1{
+            text-align: center;
+            border-radius: 10px;
+            background-color: blue;
+
+        }
+        .error{
+            color:Red;
+            
+        }
+        .btn{
+            background-color: green;
+            color:white;
+            padding: 10px;
+            margin: 10px;
+            width:95%;
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="formbox">
+        <h1>Face-Book Registration </h1>
+        <form action="">
+            <input type="text" id="fname" placeholder="First Name" onblur="validateName('fname')">
+            <div class="error" id="fnameerr"></div>
+
+            <input type="text" id="lname" placeholder="last Name" onblur="validateName('lname')">
+            <div class="error" id="lnameerr"></div>
+
+            <input type="email" id="email" placeholder="email" onblur="validateemail()">
+            <div class="error" id="emailerr"></div>
+
+            <input type="password" id="password" placeholder="Password" onblur="validatePassword()">
+            <div class="error" id="passworderr"></div>
+
+            <select name="gender" id="gender" onblur="validateGender()">
+                <option value="">Select Gender</option>
+                <option >Male</option>
+                <option>Female</option>
+            </select>
+            <div class="error" id="gendererr"></div>
+
+            <button class="btn" type="submit">SignUp</button>
+        </form>
+    </div>
+
+    <script>
+        function validateName(id){
+            let name=document.getElementById(id).value.trim();
+            let err=document.getElementById(id+"err");
+            if(name.length<2){
+                err.textContent="Enter A valid Name";
+            }
+            else{
+                err.textContent="";
+            }
+        }
+        function validatePassword(){
+            let password=document.getElementById("password").value;
+            let err=document.getElementById("passworderr");
+            if(password.length<8){
+                err.textContent="enter valid password";
+            }
+            else{
+                err.textContent="";
+            }
+        }
+
+        function validateemail(){
+        let email = document.getElementById("email").value.trim();
+        let err = document.getElementById("emailerr");
+        let pattern = /^\S+@\S+\.\S+$/;
+        err.textContent = pattern.test(email) ? "" : "Invalid email";
+
+        }
+        function validateGender() {
+    let gender = document.getElementById("gender").value;
+    let err = document.getElementById("gendererr");
+    err.textContent = gender === "" ? "Select a gender" : "";
+  }
+    </script>
+    
+</body>
+</html>

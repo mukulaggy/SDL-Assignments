@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>User Validation</title>
+</head>
+<body>
+  <form onsubmit="return validateForm()">
+    <input type="text" id="name" placeholder="Name"><br>
+    <input type="password" id="password" placeholder="Password"><br>
+    <input type="text" id="phone" placeholder="Phone"><br>
+    <input type="email" id="email" placeholder="Email"><br>
+    <input type="text" id="address" placeholder="Address"><br>
+    <button type="submit">Submit</button>
+  </form>
+
+  <script>
+    function validateForm() {
+      let name = document.getElementById("name").value.trim();
+      let password = document.getElementById("password").value;
+      let phone = document.getElementById("phone").value;
+      let email = document.getElementById("email").value.trim();
+      let address = document.getElementById("address").value.trim();
+
+      if (!name || name.length < 2) {
+        alert("Enter a valid name");
+        return false;
+      }
+
+      if (!password || password.length < 6) {
+        alert("Password must be at least 6 characters");
+        return false;
+      }
+
+      if (!/^\d{10}$/.test(phone)) {
+        alert("Enter a valid 10-digit phone number");
+        return false;
+      }
+
+      if (!/^\S+@\S+\.\S+$/.test(email)) {
+        alert("Enter a valid email");
+        return false;
+      }
+
+      if (!address || address.length < 5) {
+        alert("Enter a valid address");
+        return false;
+      }
+
+      alert("All data is valid!");
+      return true;
+    }
+  </script>
+</body>
+</html>
