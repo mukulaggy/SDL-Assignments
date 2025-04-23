@@ -1,0 +1,12 @@
+
+CREATE DATABASE college_admission
+USE college_admission_db;
+
+CREATE TABLE admissions (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(100),
+  email VARCHAR(100),
+  course VARCHAR(50),
+  status VARCHAR(20) DEFAULT 'Pending',
+  submitted_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);

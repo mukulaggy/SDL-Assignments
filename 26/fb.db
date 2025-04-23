@@ -1,0 +1,20 @@
+CREATE DATABASE mini_facebook;
+
+USE mini_facebook;
+
+-- Users Table
+CREATE TABLE users (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  username VARCHAR(50),
+  email VARCHAR(100),
+  password VARCHAR(100)
+);
+
+-- Posts Table
+CREATE TABLE posts (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  user_id INT,
+  content TEXT,
+  created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (user_id) REFERENCES users(id)
+);

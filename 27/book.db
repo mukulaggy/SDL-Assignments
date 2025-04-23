@@ -1,0 +1,25 @@
+CREATE DATABASE library_db;
+USE library_db;
+
+-- User table
+CREATE TABLE users (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(100),
+  email VARCHAR(100)
+);
+
+-- Books table
+CREATE TABLE books (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  title VARCHAR(100),
+  author VARCHAR(100),
+  genre VARCHAR(50)
+);
+
+-- Sample books
+INSERT INTO books (title, author, genre) VALUES
+('The Great Gatsby', 'F. Scott Fitzgerald', 'Fiction'),
+('1984', 'George Orwell', 'Dystopian'),
+('To Kill a Mockingbird', 'Harper Lee', 'Drama'),
+('The Hobbit', 'J.R.R. Tolkien', 'Fantasy'),
+('The Alchemist', 'Paulo Coelho', 'Adventure');
