@@ -6,7 +6,7 @@ if (isset($_POST['submit'])) {
   $email = $_POST['email'];
   $course = $_POST['course'];
 
-  $conn->query("INSERT INTO admissions (name, email, course) VALUES (?, ?, ?)");
+  $conn->query("INSERT INTO admissions (name, email, course) VALUES ('$name', '$email', '$course')");
   echo "Application submitted!";
 }
 ?>

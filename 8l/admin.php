@@ -1,11 +1,14 @@
 <?php
-include 'db.php';
-if($_SERVER['REQUEST_METHOD']==="POST"){
-    $id=$_POST["id"];
-    $s=$_POST["status"];
-    $conn->query("UPDATE compaints SET STATUS='$s' WHERE is='$id'");
+include'db.php';
+session_start();
+
+if($_SERVER["REQUEST_METHOD"]=="POST"){
+    $id=$_POST['user_id'];
+    $status=$_POST['status'];
+    $conn->query("UPDATE complaints SET status='$status' WHERE id='$id'");
 }
-$res=$conn->query("SELECT * FROM complaints");
+$res=$conn->query("select * from complaints");
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,40 +21,37 @@ $res=$conn->query("SELECT * FROM complaints");
     <h1>admin panel</h1>
     <table border="1">
         <tr>
-            <td>ID</td>
-            <td>User</td>
-            <td>Subject</td>
+            <td>id</td>
+            <td>userid</td>
+            <td>subject</td>
             <td>Description</td>
-            <td>Status</td>
-            <td>Action</td>
+            <td>status</td>
+            <td>action</td>
         </tr>
-        <?php while($row=$res->fetch_assoc()) { ?>
+            <?php while($row=$res->fetch_assoc()) { ?>
         <tr>
-            
-                <td><?= $row["id"]?></td>
-                <td><?= $row["user_id"]?></td>
-                <td><?= $row["subject"]?></td>
-                <td><?= $row["description"]?></td>
-                <td><?= $row["status"]?></td>
-                <td>
-                    <form method="post">
-                        <input type="hidden" name="id" value="<?=$row['id']?>">
-                        <select name="status" >
-                            <option <?=$row["status"]=="pending" ? "selected":" " ?>>pending</option>
-                            <option <?=$row['status']=="resolved"?'selected':" "?>> resolved</option>
-                        </select>
-                        <button type="submit">update</button>
+            <td><?=$row['id']?></td>
+            <td><?=$row['user_id']?></td>
+            <td><?=$row['subject']?></td>
+            <td><?=$row['description']?></td>
+            <td><?=$row['status']?></td>
+            <td>
+                <form method="post">
+                    <input type="hidden" name="id" value="<?=$row['id']?>">
+                    <select name="status" >
+                        <option <?= $row['status']=="pending"?"select": " "?>>pending</option>
+                        <option <?= $row['status']=="solved"?"select": " "?>>resolved</option>
+                    </select>
+                    <button type="submit">Update</button>
+                </form>
+            </td>
 
-                    </form>
-                </td>
-
-
-
-
-                
         </tr>
-        <?php } ?>
+                
+            
 
+
+        <?php } ?> 
     </table>
     
 </body>

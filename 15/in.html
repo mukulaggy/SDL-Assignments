@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    
+</style>
+<body>
+    <div  id="sff">
+        <form onsubmit="sf(event)" >
+            <h1>signup form</h1>
+            Username:<input type="text" id="sfusername" placeholder="enter username"><br>
+            Password:<input type="password" id="sfpassword" placeholder="enter password"><br>
+            <button type="submit">Register</button>
+        </form>
+    </div>
+
+    <div  style="display: none;" id="lff">
+        <form onsubmit="lf(event)">
+            <h1>login form</h1>
+            Username:<input type="text" id="lfusername" placeholder="enter username"><br>
+            Password<input type="password" id="lfpassword" placeholder="enter password"><br>
+            <button type="submit">login</button>
+        </form>
+
+        <p id="result"></p>
+    </div>
+
+
+    <script>
+
+        let savedusername="";
+        let savedpassword="";
+
+        function sf(event){
+            event.preventDefault(); // prevent form submission
+            let user=document.getElementById("sfusername").value.trim();
+            let pass=document.getElementById("sfpassword").value.trim();
+            let res=document.getElementById("result");
+
+            if(!user || !pass){
+                res.innerHTML="Enter username and password";
+            }
+            savedusername=user;
+            savedpassword=pass;
+
+            document.getElementById("sff").style.display="none";
+            document.getElementById("lff").style.display="block";
+
+        }
+        function lf(event){
+            event.preventDefault(); // prevent form submission
+            let user=document.getElementById("lfusername").value.trim();
+            let pass=document.getElementById("lfpassword").value.trim();
+            let res=document.getElementById("result");
+
+            if(user===savedusername && pass===savedpassword){
+                res.innerHTML=`username is ${user}`;
+            }
+      
+
+        }
+    </script>
+    
+</body>
+</html>

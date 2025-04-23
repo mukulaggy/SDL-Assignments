@@ -1,38 +1,18 @@
 <?php
 
-$employes = [
-    "John Doe",
-    "Jane Smith",
-    "Michael Brown",
-    "Emily Davis",
-    "Chris Johnson",
-    "Patricia Williams",
-    "Robert Jones",
-    "Linda Garcia",
-    "David Martinez",
-    "Mary Rodriguez",
-    "James Hernandez",
-    "Barbara Wilson",
-    "Charles Anderson",
-    "Elizabeth Taylor",
-    "Thomas Thomas",
-    "Sarah Moore",
-    "Matthew Jackson",
-    "Jessica Martin",
-    "Daniel Lee",
-    "Nancy Perez"
-];
-
-if($_SERVER["REQUEST_METHOD"]=="POST"){
-    $name=trim($_POST["name"]);
-    if(in_array($name,$employes,true)){
-        echo "<p class='result'>$name found in list</p>";
-
-    }else{
-        echo"<p class='not-found'>$name not in list</p>";
+if($_SERVER["REQUEST_METHOD"]=='POST'){
+    $employees=["mukul","aniket","akshay","rohit"];
+    $name=trim($_POST['name']);
+    if(in_array($name,$employees,true)){
+        echo"<p class='result'>$name is in list</p>";
+    }
+    else{
+        echo"<p class='not-found'>$name is not in list</p>";
     }
 
 }
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -42,14 +22,11 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
     <title>Document</title>
 </head>
 <body>
-
-<h1>emp searching</h1>
-<form method="post">
-<label for="">employee name:</label>
-<input type="text" id="name" name="name" required>
-<button name="submit">submit</button>
-
-</form>
+    <h1>employee search</h1>
+    <form method="post">
+        emo anme:<input type="text" name="name" placeholder="enter name">
+        <button name="submit" type="submit">submit</button>
+    </form>
     
 </body>
 </html>

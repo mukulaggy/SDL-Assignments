@@ -1,21 +1,27 @@
 <?php
 include "config.php";
 session_start();
-if ($_POST) {
+if (isset($_POST['submit'])) {
   $email = $_POST['email'];
-  $pass = $_POST['password'];
+  $password = $_POST['password'];
   $res = $conn->query("SELECT * FROM users WHERE email='$email'");
-  $user = $res->fetch_assoc();
-  if ($user && password_verify($pass, $user['password'])) {
-    $_SESSION['user'] = $user;
-    header("Location: home.php");
+  if ($res->num_rows > 0) {
+    $user = $res->fetch_assoc();
+    if ($user['password'] === md5($password)) {
+      $_SESSION['user'] = $user; // ✅ Save the whole user row
+      header("Location: home.php");
+      exit;
+    } else {
+      echo "Invalid password!";
+    }
   } else {
-    echo "Invalid credentials.";
+    echo "User not found!";
   }
+
 }
 ?>
 <form method="post">
   Email: <input name="email"><br>
   Password: <input type="password" name="password"><br>
-  <input type="submit" value="Login">
+  <input type="submit" value="Login" name="submit">
 </form>

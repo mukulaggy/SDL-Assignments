@@ -1,20 +1,14 @@
 <?php
-include'db.php';
-session_start();
+include 'db.php';
 if(isset($_POST["login"])){
     $u=$_POST["username"];
     $p=md5($_POST["password"]);
-    $res=$conn->query("SELECT * from users WHERE username='$u' AND password='$p'");
+    $res=$conn->query("SELECT * FROM users where username='$u' AND password='$p' ");
     if($res->num_rows>0){
+        $_SESSION["user_id"]=$res->fetch_assoc()['id'];
         header("Location: submit_complaint.php");
-        echo"login succesffull";
-    }else{
-        echo"invalid login";
     }
-
 }
-
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -24,11 +18,13 @@ if(isset($_POST["login"])){
     <title>Document</title>
 </head>
 <body>
-    <h1>login form</h1>
     <form method="post">
-        <input type="text" placeholder="username" value="username" name="username">
-        <input type="password" placeholder="password" value="password" name="password">
-        <button name="login">login</button>
+        username: <input type="text" placeholder="username" name="username">
+        password: <input type="password" placeholder="password" name="password">
+
+        <button name="login">submit</button>
+
+
     </form>
     
 </body>

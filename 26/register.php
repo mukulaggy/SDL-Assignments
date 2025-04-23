@@ -3,7 +3,7 @@ include "config.php";
 if ($_POST) {
   $name = $_POST['username'];
   $email = $_POST['email'];
-  $pass = md5($_POST['password'], PASSWORD_DEFAULT);
+  $pass = md5($_POST['password']);
   $conn->query("INSERT INTO users (username, email, password) VALUES ('$name', '$email', '$pass')");
   echo "Registered successfully! <a href='login.php'>Login</a>";
 }

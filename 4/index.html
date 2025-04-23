@@ -5,91 +5,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<style>
-    body{
-        padding: 100px;
-        margin: auto;
-
-    }
-    .formbox{
-        border-radius: 20px;
-        background-color: aliceblue;
-        padding: 15px;
-    }
-
-    input,button{
-        margin-bottom: 10px;
-        width: 95%;
-
-    }
-    h1{
-        text-align: center;
-    }
-
-    .error{
-        color: red;
-    }
-</style>
 <body>
- 
     <div class="formbox">
-        <h1>gmail form</h1>
-        <form onsubmit="return validateForm()">
-            <input type="text" placeholder="fname" id="fname"><br>
-            <input type="text" placeholder="lname" id="lname"><br>
-            <input type="email" placeholder="email" id="email"><br>
-            <input type="password" placeholder="password" id="password"><br>
-            <input type="password" placeholder="confirm password" id="confirmpassword"><br>
-            <input type="number"  id="number" placeholder="Phone Number"><br>
+        <h1>gmail registration</h1>
+        <form onsubmit=" return validateform()">
 
-            <div class="error" id="err"></div>
+            <input type="text" id="fname" placeholder="First Name">
+            <input type="text" id="lname" placeholder="Last Name">
+            <input type="email" id="email" placeholder="Email">
+            <input type="password" id="password" placeholder="Password">
+            <input type="password" id="confirm" placeholder="Confirm Password">
+            <input type="text" id="phone" placeholder="Phone Number">
+            
+            <div class="error" id="formError"></div>
             <button type="submit">Register</button>
+
         </form>
     </div>
     <script>
-        function validateForm(){
+        function validateform(){
             let fname=document.getElementById("fname").value.trim();
             let lname=document.getElementById("lname").value.trim();
+
             let email=document.getElementById("email").value.trim();
+
             let password=document.getElementById("password").value;
-            let confirmpassword=document.getElementById("confirmpassword").value;
-            let pnum=document.getElementById("number").value.trim();
-            let err=document.getElementById("err");
-            err.textContent="";
+
+            let confirmpassword=document.getElementById("confirm").value;
+
+            let phone=document.getElementById("phone").value.trim();
+            let err=document.getElementById("formError");
+
+            err.textContent=" ";
 
             if(fname.length<2 || lname.length<2){
-                err.textContent="fname and lname cant be less than 2 characters";
+                err.textContent="name cannot be lt2";
                 return false;
-
             }
-            if(!/^\S+@\S+\.\S+$/.test(email)){
-
-                err.textContent="enter valid email";
+            if(!/^\S+@\S+\.\S$/.test(email)){
+                err.textContent="invalid"
                 return false;
-
             }
-            if(password.length<6){
-                err.textContent='enter more chaaracter pass';
-                return false;
+            if(!/^d{10}$/)
 
-            }
-            if(confirmpassword!=password){
-                err.textContent="cp and p no match";
-                return false;
-
-            }
-            if(!/^\d{10}$/.test(pnum)){
-                err.textContent="enter valid num";
-                return false;
-
-            }
-
-            alert("Registration SuccessFull");
-
-            return true;
-
-
-        }
+}
     </script>
     
 </body>

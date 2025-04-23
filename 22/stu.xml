@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Employees>
+    <Employee empType="Full-time">
+        <ID>101</ID>
+        <Name>John Doe</Name>
+        <Age>30</Age>
+        <Position>Software Engineer</Position>
+        <Department>IT</Department>
+    </Employee>
+
+    <Employee empType="Part-time">
+        <ID>102</ID>
+        <Name>Jane Smith</Name>
+        <Age>25</Age>
+        <Position>Data Analyst</Position>
+        <Department>Business Intelligence</Department>
+    </Employee>
+</Employees>

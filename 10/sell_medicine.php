@@ -15,8 +15,8 @@ $res = $conn->query("SELECT * FROM medicines");
 <form method="post">
   Medicine:
   <select name="medicine_id">
-    <?php while ($m = $res->fetch_assoc()) { ?>
-      <option value="<?= $m['id'] ?>"><?= $m['name'] ?> (Stock: <?= $m['quantity'] ?>)</option>
+    <?php while ($row = $res->fetch_assoc()) { ?>
+      <option value="<?= $row['id'] ?>"><?= $row['name'] ?> (Stock: <?= $row['quantity'] ?>)</option>
     <?php } ?>
   </select><br>
   Quantity to Sell: <input name="sell_qty" type="number" required><br>
